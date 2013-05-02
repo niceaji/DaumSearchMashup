@@ -1,0 +1,13 @@
+body {padding:50px 0}
+
+.wrapper {width:800px;margin: 30px auto 0 auto}
+
+.wrapper .search {
+	background-color:#eee;
+	padding:20px;
+	border-radius : 10px;
+}
+.input-append {width:90%}
+#query {width:80%}
+
+.tab {margin:20px 0}
