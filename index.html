@@ -35,7 +35,7 @@
 	</div>
 
 	<div class="list">
-		<p class="help">검색해 주세요</p>
+		<div class="box">검색해 주세요</div>
 		<!-- <ul>
 			<li><a href="">testset</a></li>
 			<li><a href="">testset</a></li>
@@ -50,9 +50,21 @@
 </div>
 
 
+<script type="text/template" id="listTemplate">
+<ul>
+<% for(var i=0;i<list.length; i++) { %>
+	<li><a href="<%=list[i].link%>"><%=list[i].title%></a></li>
+<% } %>
+</ul>
+</script>
+
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://underscorejs.org/underscore.js"></script>
-<script src="app.js"></script>
+
+<script src="config.js"></script>
+<script src="util.js"></script>
+<script src="DaumSearcher.js"></script>
+<script src="main.js"></script>
 
 </body>
 </html>
