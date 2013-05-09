@@ -25,6 +25,12 @@
 
 		searchQuery : function(){
 
+
+			if(event.type==="submit"){
+				this.page = 1;
+			}
+
+
 			var query = $('#query').val();
 
 			this.daumSearcher.call(query, this.page, this.searchQueryPrint.bind(this) );
@@ -34,7 +40,10 @@
 		},
 		searchQueryPrint : function(data){
 
-			$('.list .box').append(  _.template($('#listTemplate').html() ,
+
+			var appendFunc = (this.page===1) ? "html":"append";
+
+			$('.list .box')[appendFunc](  _.template($('#listTemplate').html() ,
 					 {list:data.channel.item}) );
 
 			//TODO. 더보기 갯수가 있을경우
