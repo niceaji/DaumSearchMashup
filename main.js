@@ -28,6 +28,8 @@
 			var query = $('#query').val();
 
 			this.daumSearcher.call(query, this.page, this.searchQueryPrint.bind(this) );
+
+			return false;
 			
 		},
 		searchQueryPrint : function(data){
