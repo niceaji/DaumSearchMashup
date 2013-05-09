@@ -18,7 +18,7 @@
 	<div class="search">
 		<form class="search-form">
 			<div class="input-append">
-			  <input class="span2" id="query" type="text">
+			  <input class="span2" id="query" type="text" value="제주대">
 			  <button class="btn" type="submit">검색</button>
 			</div>
 		</form>	
@@ -44,7 +44,9 @@
 			<li><a href="">testset</a></li>
 		</ul>
 
-		<button class="btn">더보기</button> -->
+		 -->
+		 
+		 <button class="btn hide more">더보기</button>
 	</div>
 
 </div>
@@ -53,7 +55,7 @@
 <script type="text/template" id="listTemplate">
 <ul>
 <% for(var i=0;i<list.length; i++) { %>
-	<li><a href="<%=list[i].link%>"><%=list[i].title%></a></li>
+	<li><a href="<%=list[i].link%>"><%=dsm.rhtmlspecialchars(list[i].title)%></a></li>
 <% } %>
 </ul>
 </script>

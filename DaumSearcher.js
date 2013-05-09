@@ -5,7 +5,7 @@
 	};
 	DaumSearcher.prototype={
 
-		call : function(query, callback){
+		call : function(query,page, callback){
 
 			this.callback = callback;
 
@@ -14,30 +14,22 @@
 				searchTypeUrl : app.SEARCH_API_URL[0],
 				apikey : app.API_KEY,
 				query : query,
-				pageno : 1
+				pageno : page
 			});
+
 
 			app._log("searchUrl:",url);
 
-			// $.getJSON(url,  callbackData);
-			this.parse();
+			$.getJSON(url,  this.parse.bind(this) );
+			
+
+
 		},
 		parse : function(data){
-			// 데이터 가져왔다 치고 
 
-
-			var data = {
-				list : [
-					{title:"11111",link:"1"},
-					{title:"2222",link:"2"},
-					{title:"3333",link:"3"}
-				]
-			};
-			debugger;
+			console.log("parse:", data);
 
 			this.callback(data);
-			
-		
 		}
 	};
 

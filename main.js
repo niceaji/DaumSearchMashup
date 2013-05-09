@@ -7,33 +7,44 @@
 	// 	console.log("data:",data);
 	// };
 
-
-
 	var main = function(){
 
-
 		this.addEvent();
+		this.page = 1;
 
-
+		this.daumSearcher = new app.DaumSearcher( );
 	};
 	main.prototype = {
 		
 
 		addEvent : function(){
 
-			$('.search-form').on("submit", this.searchQuery);
+			$('.search-form').on("submit", this.searchQuery.bind(this) );
 		},
 
 
 		searchQuery : function(){
 
-			var daumSearcher = new app.DaumSearcher( );
-			daumSearcher.call( $('#query').val() , function(data){
+			var query = $('#query').val();
 
+			this.daumSearcher.call(query, this.page, this.searchQueryPrint.bind(this) );
+			
+		},
+		searchQueryPrint : function(data){
 
-				$('.list .box').html(  _.template($('#listTemplate').html() , data) );
-			});
+			$('.list .box').append(  _.template($('#listTemplate').html() ,
+					 {list:data.channel.item}) );
+
+			//TODO. 더보기 갯수가 있을경우
+			if(this.page === 1){
+				
+				$('button.more').on("click", this.searchQuery.bind(this) ).show();
+
+			}
+
+			this.page++;
 		}
+
 
 
 	};
